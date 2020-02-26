@@ -1,0 +1,28 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+    // Dependency setup for Groovy 2.5
+    //compile 'org.codehaus.groovy:groovy-all:2.5.9'
+    //testCompile "org.spockframework:spock-core:1.2-groovy-2.5"
+
+    // Dependency setup for Groovy 2.4
+    compile 'org.codehaus.groovy:groovy-all:2.4.13'
+    testCompile "org.spockframework:spock-core:1.2-groovy-2.4"
+
+    compile "net.sf.nomin:nomin:1.1.7"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
