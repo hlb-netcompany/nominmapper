@@ -1,3 +1,4 @@
+import org.nomin.NominMapper
 import org.nomin.core.Nomin
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -5,6 +6,7 @@ import spock.lang.Unroll
 import static Itemtype.*
 
 class ItemMapperSpec extends Specification {
+    NominMapper mapper = new Nomin(ItemMapper, ItemDataMapper).disableCache()
 
     @Unroll
     void "mapper from ItemInfo->CombinedItem converts itemtype correctly"() {
@@ -17,7 +19,6 @@ class ItemMapperSpec extends Specification {
                     type: leftsideType
                 )
             )
-            Nomin mapper = (new Nomin(ItemMapper).disableCache() as Nomin)
         when:
             CombinedItem convertTo = mapper.map(convertFrom, CombinedItem)
         then:
@@ -40,7 +41,6 @@ class ItemMapperSpec extends Specification {
                 data: 'this is my data dump',
                 type: rightSideType
             )
-            Nomin mapper = (new Nomin(ItemMapper).disableCache() as Nomin)
         when:
             ItemInfo convertTo = mapper.map(convertFrom, ItemInfo)
         then:
